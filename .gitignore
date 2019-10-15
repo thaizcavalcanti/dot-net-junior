@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/dot.net.junior/.vs/dot.net.junior
+/dot.net.junior/LogicaNegocio/obj/Debug
+/dot.net.junior/Model.Entidades/obj
+/dot.net.junior/Model.Infraestrutura/obj/Debug
+/dot.net.junior/packages/Antlr.3.5.0.2
+/dot.net.junior/packages
+/dot.net.junior/Site/bin
+/dot.net.junior/Site/obj/Debug
