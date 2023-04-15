@@ -1,0 +1,139 @@
+﻿@model Model.Entidades.Model.ClienteViewModel
+@using Model.Entidades.Enums
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h3>Detalhes do Cliente</h3>
+    <hr />
+</div>
+
+@using (Html.BeginForm())
+{
+<div class="container-fluid">
+    <div class="card card-default tabelas-details">
+        <div class="card-header" style=" background-color: rgb(128 128 128);">
+            <h3 class="card-title Titulo2 pb-0" style="color: white; font-size:18px;">Dados do cliente</h3>
+        </div>
+        <div class="col">
+            <table class="table  table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeCliente)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.NomeCliente)
+                    </td>
+                </tr>
+                @if (!string.IsNullOrEmpty(Model.CPF))
+                {
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CPF)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.CPFComMascara)
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CNPJ)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.CNPJComMascara)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="card-header" style=" background-color: rgb(128 128 128);">
+            <h3 class="card-title Titulo2 pb-0" style="color: white; font-size:18px;">Endereço</h3>
+        </div>
+        <div class="col">
+            <table class="table  table-striped ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Endereco.Cep)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Endereco.Cep)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Endereco.Cidade)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Endereco.Cidade)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Endereco.Rua)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Endereco.Rua)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Endereco.Numero)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Endereco.Numero)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Endereco.Bairro)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Endereco.Bairro)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Endereco.TipoEndereco)
+                    </th>
+                    <td>
+                        @((TipoEnderecoEnum)Model.Endereco.TipoEndereco)
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card-header" style=" background-color: rgb(128 128 128);">
+            <h3 class="card-title Titulo2 pb-0" style="color: white; font-size:18px;">Contato</h3>
+        </div>
+        <div class="col">
+            <table class="table  table-striped ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TelefoneCelular.NumeroFormatado)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.TelefoneCelular.NumeroFormatado)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TelefoneCelular.TipoContato)
+                    </th>
+                    <td>
+                        @((TipoContatoEnum)Model.TelefoneCelular.TipoContato)
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-info" href="javascript:history.back()">Voltar</a>
+        </div>
+    </div>
+</div>
+}

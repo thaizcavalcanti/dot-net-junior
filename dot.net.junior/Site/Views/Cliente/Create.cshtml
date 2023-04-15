@@ -1,0 +1,288 @@
+﻿@model Model.Entidades.Model.ClienteViewModel
+@using Model.Entidades.Enums
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_ValidationStylePartial" />
+
+
+<div>
+    <h3>Cadastro de Clientes</h3>
+    <p>Preencha o formulário abaixo para incluir um cliente no seu sistema.</p>
+    <hr />
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header" style=" background-color: rgb(128 128 128);">
+                <h3 class="card-title Titulo2 pb-0" style="color: white; font-size:18px;">Dados do cliente</h3>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label>Nome do Cliente:</label>
+                    @Html.TextBoxFor(model => model.NomeCliente, new { @class = "form-control" })
+                    <div class="text-danger">
+                        @Html.ValidationMessageFor(model => model.NomeCliente)
+                    </div>
+                </div>
+
+                @if (String.IsNullOrEmpty(Model.CNPJ))
+                {
+                    <div class="col-md-4">
+                        <label></label>
+                        <br />
+                        <input type="radio" name="TipoPessoaFisica" id="pessoa-fisica" checked />
+                        <label for="pessoa-fisica">Pessoa Física</label>
+                        <br />
+                        <input type="radio" name="TipoPessoaFisica" id="pessoa-juridica" />
+                        <label for="pessoa-juridica">Pessoa Jurídica</label>
+                    </div>
+                    <div class="col-md-4" id="cpf-container">
+                        <label>CPF:</label>
+                        @Html.TextBoxFor(model => model.CPF, new { @class = "form-control cpf-mask" })
+                        <div class="text-danger">
+                            @Html.ValidationMessageFor(model => model.CPF)
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="cnpj-container" style="display:none;">
+                        <label>CNPJ:</label>
+                        @Html.TextBoxFor(model => model.CNPJ, new { @class = "form-control cnpj-mask" })
+                        <div class="text-danger">
+                            @Html.ValidationMessageFor(model => model.CNPJ)
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-4">
+                        <input type="radio" name="TipoPessoaFisica" id="pessoa-fisica" />
+                        <label for="pessoa-fisica">Pessoa Física</label>
+                        <br />
+                        <input type="radio" name="TipoPessoaFisica" id="pessoa-juridica" checked />
+                        <label for="pessoa-juridica">Pessoa Jurídica</label>
+                    </div>
+                    <div class="col-md-4" id="cpf-container" style="display:none;">
+                        <label>CPF:</label>
+                        @Html.TextBoxFor(model => model.CPF, new { @class = "form-control cpf-mask" })
+                        <div class="text-danger">
+                            @Html.ValidationMessageFor(model => model.CPF)
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="cnpj-container">
+                        <label>CNPJ:</label>
+                        @Html.TextBoxFor(model => model.CNPJ, new { @class = "form-control cnpj-mask" })
+                        <div class="text-danger">
+                            @Html.ValidationMessageFor(model => model.CNPJ)
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header" style=" background-color: rgb(128 128 128);">
+                <h3 class="card-title Titulo2 pb-0" style="color: white; font-size:18px;">Endereço</h3>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label>CEP:</label>
+                    @Html.TextBoxFor(model => model.Endereco.Cep, new { @class = "form-control", id = "CEP" })
+                    <div class="text-danger">
+                        @Html.ValidationMessageFor(model => model.Endereco.Cep)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Cidade:</label>
+                    @Html.TextBoxFor(model => model.Endereco.Cidade, new { @class = "form-control", id = "Cidade" })
+                    <div class="text-danger">
+                        @Html.ValidationMessageFor(model => model.Endereco.Cidade)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Rua:</label>
+                    @Html.TextBoxFor(model => model.Endereco.Rua, new { @class = "form-control", id = "Rua" })
+                    <div class="text-danger">
+                        @Html.ValidationMessageFor(model => model.Endereco.Rua)
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label>Número:</label>
+                    @Html.TextBoxFor(model => model.Endereco.Numero, new { @class = "form-control", id = "Numero" })
+                    <div class="text-danger">
+                        @Html.ValidationMessageFor(model => model.Endereco.Numero)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Bairro:</label>
+                    @Html.TextBoxFor(model => model.Endereco.Bairro, new { @class = "form-control", id = "Bairro" })
+                    <div class="text-danger">
+                        @Html.ValidationMessageFor(model => model.Endereco.Bairro)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label></label>
+                    <br />
+                    @Html.RadioButtonFor(model => model.Endereco.TipoEndereco, "1", new { id = "comercial", @checked = Model.Endereco.TipoEndereco == (int)TipoEnderecoEnum.Comercial ? "checked" : "" })
+                    <label for="comercial">Comercial</label>
+                    <br />
+                    @Html.RadioButtonFor(model => model.Endereco.TipoEndereco, "2", new { id = "residencial", @checked = Model.Endereco.TipoEndereco == (int)TipoEnderecoEnum.Residencial ? "checked" : "" })
+                    <label for="residencial">Residencial</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header" style=" background-color: rgb(128 128 128);">
+                <h3 class="card-title Titulo2 pb-0" style="color: white; font-size:18px;">Contato</h3>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label></label>
+                    <select class="form-control" id="TipoContato" name="TelefoneCelular.TipoContato">
+                        @foreach (var valor in Enum.GetValues(typeof(TipoContatoEnum)))
+                        {
+                            if (Model.TelefoneCelular.TipoContato == (int)valor)
+                            {
+                                <option value="@((int)valor)" selected>@valor</option>
+                            }
+                            else
+                            {
+                                <option value="@((int)valor)">@valor</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4" id="fixo-container" style="@(Model.TelefoneCelular.TipoContato == (int)TipoContatoEnum.Fixo ? "display: block;" : "display: none;")">
+                    <label>DDD / Número:</label>
+                    @Html.TextBoxFor(model => model.TelefoneCelular.NumeroFixo, new { @class = "form-control telefone-mask" })
+                    <div class="text-danger">
+                        @Html.ValidationMessageFor(model => model.TelefoneCelular.NumeroFixo)
+                    </div>
+                </div>
+                <div class="col-md-4" id="celular-container" style="@(Model.TelefoneCelular.TipoContato == (int)TipoContatoEnum.Celular ? "display: block;" : "display: none;")">
+                    <label>DDD / Número:</label>
+                    @Html.TextBoxFor(model => model.TelefoneCelular.NumeroCelular, new { @class = "form-control celular-mask" })
+                    <div class="text-danger">
+                        @Html.ValidationMessageFor(model => model.TelefoneCelular.NumeroCelular)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="row mb-3">
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Cadastrar"
+                   class="btn btn-success" />
+        </div>
+    </div>
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script>
+    $(document).ready(function ($) {
+        $("#CEP").mask("99.999-999");
+        $('.ddd-mask').mask('00', { clearIfNotMatch: true });
+        $('.telefone-mask').mask('00 0000-0000', { clearIfNotMatch: true });
+        $('.celular-mask').mask('00 0 0000-0000', { clearIfNotMatch: true });
+        $('.cpf-mask').mask('000.000.000-00', { reverse: true });
+        $('.cnpj-mask').mask('00.000.000/0000-00', { reverse: true });
+    });
+
+
+    $("input[name='TipoPessoaFisica']").click(function () {
+        if ($(this).attr("id") === "pessoa-fisica") {
+            $("#CNPJ").val("");
+            $("#cpf-container").show();
+            $("#cnpj-container").hide();
+            $('#residencial').prop("disabled", false)
+        } else {
+            $("#CPF").val("");
+            $("#cpf-container").hide();
+            $("#cnpj-container").show();
+            $('#comercial').prop("checked", true)
+            $('#residencial').prop("disabled", true)
+        }
+    });
+
+    $("#Numero").keypress(function (event) {
+        var charCode = (event.which) ? event.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            event.preventDefault();
+        }
+    });
+
+    $("#CEP").blur(function () {
+        var cep = $(this).val().replace(/\D/g, '');
+        if (cep != "") {
+            var validacep = /^[0-9]{8}$/;
+            if (validacep.test(cep)) {
+                $("#Rua").val("...");
+                $("#Bairro").val("...");
+                $("#Cidade").val("...");
+                $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+                    if (!("erro" in dados)) {
+                        $("#Rua").val(dados.logradouro);
+                        $("#Bairro").val(dados.bairro);
+                        $("#Cidade").val(dados.localidade);
+                    }
+                    else {
+                        Limpar_Endereco();
+                        alert("CEP não encontrado.");
+                    }
+                });
+            }
+            else {
+                Limpar_Endereco();
+                alert("Formato de CEP inválido.");
+            }
+        }
+        else {
+            Limpar_Endereco();
+        }
+    });
+
+    $("#CEP").keydown(function (event) {
+        if (event.keyCode == 8 || event.keyCode == 46) {
+            $("#Rua").val("");
+            $("#Bairro").val("");
+            $("#Cidade").val("");
+            $("#Numero").val("");
+        }
+    });
+
+    $("#TipoContato").change(function () {
+        if ($(this).val() === '1') {
+            $('#TelefoneCelular_NumeroCelular').val("");
+            $("#fixo-container").show();
+            $("#celular-container").hide();
+        } else {
+            $('#TelefoneCelular_NumeroFixo').val("");
+            $("#fixo-container").hide();
+            $("#celular-container").show();
+        }
+    });
+</script>
+
+

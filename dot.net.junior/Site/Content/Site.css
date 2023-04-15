@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.tabelas-details th {
+    width: 30%;
+}
+.btn-lef{
+    float: right;
+    margin-left: 27px;
+}

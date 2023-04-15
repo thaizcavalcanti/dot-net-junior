@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Model.Entidades</RootNamespace>
     <AssemblyName>Model.Entidades</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,7 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\Endereco.cs" />
+    <Compile Include="Enums\TipoEnderecoEnum.cs" />
+    <Compile Include="Enums\TipoContatoEnum.cs" />
+    <Compile Include="Mappers\ClienteViewModelMapper.cs" />
+    <Compile Include="Model\ClienteViewModel.cs" />
+    <Compile Include="Model\ClienteViewModelValidate.cs" />
+    <Compile Include="Model\EnderecoViewModel.cs" />
+    <Compile Include="Model\TelefoneCelularViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entidades\TelefoneCelular.cs" />
+    <Compile Include="Util\Validacoes.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

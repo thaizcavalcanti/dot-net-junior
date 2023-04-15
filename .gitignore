@@ -3,7 +3,6 @@
 ################################################################################
 
 /dot.net.junior/.vs/dot.net.junior
-/dot.net.junior/LogicaNegocio/obj/Debug
 /dot.net.junior/Model.Entidades/obj
 /dot.net.junior/Model.Infraestrutura/obj/Debug
 /dot.net.junior/packages/Antlr.3.5.0.2
@@ -14,3 +13,6 @@
 /dot.net.junior/Model.Entidades/bin/Debug
 /dot.net.junior/LogicaNegocio/bin/Debug
 /dot.net.junior/Model.Infraestrutura/bin/Debug
+/.vs
+obj/
+/dot.net.junior/Site/Site.csproj.user

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LogicaNegocio</RootNamespace>
     <AssemblyName>LogicaNegocio</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -42,7 +42,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="Interfaces\IClienteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicos\ClienteService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model.Entidades\Model.Entidades.csproj">
+      <Project>{73964494-f4c0-4f4a-b372-396b4fbb2287}</Project>
+      <Name>Model.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model.Infraestrutura\Model.Infraestrutura.csproj">
+      <Project>{98f9e715-7fea-4463-a893-10882deba900}</Project>
+      <Name>Model.Infraestrutura</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
