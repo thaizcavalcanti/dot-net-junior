@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using LogicaNegocio.Exceptions;
+﻿using LogicaNegocio.Exceptions;
 using LogicaNegocio.Interfaces;
 using Model.Entidades.Entidades;
 using Model.Infraestrutura.Interfaces;

@@ -13,8 +13,6 @@ namespace Site
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             UnityConfig.RegisterComponents();
-            AutoMapper.Mapper.Initialize(cfg => cfg.AddProfile<AutoMapperConfig>());
-
         }
     }
 }
